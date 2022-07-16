@@ -20,14 +20,53 @@ const getMovieById = (req, res) => {
     }
   );
 };
+
 const createMovie = (req, res) => {
-  res.send("createMovie");
+  const { movieName } = req.body;
+  if (!movieName) {
+    return res
+      .status(400)
+      .json({ success: false, error: "Please provide a movie name" });
+  }
+  req.db.query(
+    `INSERT INTO movies (movie_name) VALUES ("${movieName}")`,
+    (err) => {
+      if (err) {
+        console.log(`[ERROR: failed to create movie | ${err.message}]`);
+        return res.status(500).json({ success: false });
+      }
+      return res.json({ success: true });
+    }
+  );
 };
 const updateMovieById = (req, res) => {
-  res.send("updateMovieById");
+  const { movieName } = req.body;
+  const { movieId } = req.params;
+
+  if (!movieName) {
+    return res
+      .status(400)
+      .json({ success: false, error: "Please provide a movie" });
+  }
+  req.db.query(
+    `UPDATE movies SET movie_name="${movieName}" WHERE id=${movieId}`,
+    (err) => {
+      if (err) {
+        console.log(`[ERROR: failed to update movie | ${err.message}]`);
+        return res.status(500).json({ success: false });
+      }
+      return res.json({ success: true });
+    }
+  );
 };
 const deleteMovieById = (req, res) => {
-  res.send("deleteMovieById");
+  req.db.query(`DELETE FROM movies WHERE id="${req.params.movieId}"`, (err) => {
+    if (err) {
+      console.log(`[ERROR: failed to get movie | ${err.message}]`);
+      return res.status(500).json({ success: false });
+    }
+    return res.json({ success: true });
+  });
 };
 
 module.exports = {
