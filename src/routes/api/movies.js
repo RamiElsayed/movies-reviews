@@ -9,7 +9,6 @@ const {getMovies,
 
 const router = Router();
 
-router.use('/reviews', reviews);
 
 router.get('/', getMovies);
 router.get('/:movieId', getMovieById);
