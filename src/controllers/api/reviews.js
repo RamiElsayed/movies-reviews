@@ -1,5 +1,5 @@
-const getReviewsByMovieId = (req, res) => {
-    res.send('getReviewsByMovieId');
+const getReviews = (req, res) => {
+    res.send('getReviews');
 };
 const createReview = (req, res) => {
     res.send('createReview');
@@ -12,7 +12,7 @@ const deleteReviewById = (req, res) => {
 };
 
 module.exports = {
-    getReviewsByMovieId,
+    getReviews,
     createReview,
     updateReviewById,
     deleteReviewById

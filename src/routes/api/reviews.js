@@ -1,14 +1,14 @@
 const { Router } = require("express");
 
 const {
-  getReviewsByMovieId,
+  getReviews,
   createReview,
   updateReviewById,
   deleteReviewById,
 } = require("../../controllers/api/reviews");
 const router = Router();
 
-router.get("/", getReviewsByMovieId);
+router.get("/", getReviews);
 router.post("/", createReview);
 router.put("/:reviewId", updateReviewById);
 router.delete("/:reviewId", deleteReviewById);
