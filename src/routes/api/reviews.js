@@ -1,10 +1,16 @@
 const { Router } = require("express");
 
-const router =  Router();
+const {
+  getReviewsByMovieId,
+  createReview,
+  updateReviewById,
+  deleteReviewById,
+} = require("../../controllers/api/reviews");
+const router = Router();
 
-router.get('/', getReviews);
-router.post('/', createReview);
-router.put('/:id', editReviewById);
-router.delete('/:id', deleteReviewById);
+router.get("/", getReviewsByMovieId);
+router.post("/", createReview);
+router.put("/:reviewId", updateReviewById);
+router.delete("/:reviewId", deleteReviewById);
 
 module.exports = router;
