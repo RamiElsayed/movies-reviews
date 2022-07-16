@@ -1,6 +1,6 @@
 const { Router } = require("express");
 
-const reviews = require('./reviews');
+
 const {getMovies,
     getMovieById,
     createMovie,

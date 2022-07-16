@@ -6,7 +6,7 @@ const {
   updateReviewById,
   deleteReviewById,
 } = require("../../controllers/api/reviews");
-const router = Router();
+const router = Router({ mergeParams: true });
 
 router.get("/", getReviews);
 router.post("/", createReview);

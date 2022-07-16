@@ -1,5 +1,11 @@
 const getReviews = (req, res) => {
-    res.send('getReviews');
+    req.db.query(`SELECT * FROM reviews WHERE movie_id="${req.params.movieId}"`, (err, data) => {
+        if (err) {
+          console.log(`[ERROR: failed to get reviews | ${err.message}]`);
+          return res.status(500).json({ success: false });
+        }
+        return res.json({ success: true, data });
+      });
 };
 const createReview = (req, res) => {
     res.send('createReview');
