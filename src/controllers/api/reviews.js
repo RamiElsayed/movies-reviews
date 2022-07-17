@@ -1,8 +1,8 @@
 const getReviews = (req, res) => {
   req.db.query(
-    `SELECT movies.movie_name AS movie, reviews.review FROM reviews LEFT JOIN
-     movies ON reviews.movie_id="${req.params.movieId}" AND reviews.movie_id=
-     "${req.params.movieId}"`,
+    `SELECT movies.id, movies.movie_name, reviews.review 
+     FROM movies 
+     JOIN reviews ON reviews.movie_id=${req.params.movieId} AND reviews.movie_id = movies.id`,
     (err, data) => {
       if (err) {
         console.log(`[ERROR: failed to get reviews | ${err.message}]`);
