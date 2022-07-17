@@ -3,7 +3,7 @@ const mysql = require('mysql2');
 const dbOptions = {
   host: 'localhost',
   user: 'root',
-  password: 'Romeoromeo.5264',
+  password: process.env.DB_PASSWORD,
   database: 'movies_db'
 };
 
